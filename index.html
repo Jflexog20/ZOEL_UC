@@ -3,125 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZOEL UC SHOP</title>
+    <title>INFLUENCER ZOEL | UC SHOP</title>
     <style>
         :root {
-            --bg-color: #0d0e1b;
-            --card-bg: #16182c;
-            --primary-text: #ffffff;
-            --secondary-text: #9a9caf;
-            --price-color: #bb86fc;
-            --discount-bg: #6200ee;
-            --button-color: #1e88e5;
-            --border-color: #2a2d4a;
+            --bg-color: #0b0c16;
+            --card-bg: #1a1c33;
+            --accent-color: #ffb400; /* PUBG Yellow */
+            --price-color: #00d4ff;
+            --text-main: #ffffff;
+            --text-dim: #9ca3af;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
-            color: var(--primary-text);
+            color: var(--text-main);
             margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 450px; /* Inafaa kwa muonekano wa simu */
-            background-color: var(--bg-color);
-            min-height: 100vh;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            padding: 16px;
+            align-items: center;
         }
 
-        /* Sehemu ya Juu (Header) */
         .header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 0;
-            position: relative;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 16px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            width: 100%;
+            max-width: 500px;
         }
 
         .header h1 {
-            font-size: 1.2rem;
             margin: 0;
-            font-weight: 600;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
         }
 
-        /* Sehemu ya Kadi za UC */
-        .uc-list {
+        .shop-container {
+            width: 100%;
+            max-width: 500px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 15px;
         }
 
-        .uc-card {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            padding: 12px;
+        .uc-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            text-decoration: none; /* Ondoa mstari chini ya link */
+            text-decoration: none;
             color: inherit;
+            border: 1px solid #2d3154;
+            transition: 0.3s;
         }
 
-        .uc-card:hover {
-            background-color: #1f223a;
+        .uc-item:hover {
+            transform: scale(1.02);
+            border-color: var(--accent-color);
         }
 
-        .uc-card-left {
+        .left-side {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
-        .pubg-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 8px;
-            background-color: #333;
-            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAACXBIWXMAAAsTAAALEwEAmpwYAAAHfklEQVR4nO3dfUxTZxjH8S/6E2hL85A8Yg4V2tAorWhC8gRFS7G0CgpEBFY0GgpEBXbVggpEBFY0GgrEBXYVFgjEBXYVFgjEBXYVFgjEBXYVwP7w/P6FidS2S2s7bV+/k4Tcl/Sce07v7vPueXqeO06YmJiYAJIv5vA5AI4vBIgAAkQAAXEOAImnB7DREpMv58f+bOAYE48vR4AI8Nf7A6YAAkQAAXEOAInZfw4AiY8C7BMAf6fD5wA4mXw4A5A4+4bPBXBKfD4bAFXh8wGcUp/PB0B9+HwI58S3MwCI49sRAIjnR/sDqPofD48AIP7/AFA5vofPB/A5AD7+AKjkPwPwtwFApT7/AIjkcwC8PwFA9fkHQKRAAAnofwCoOf8AiOQHAEn+BZCEHwAABf4AEMG/AJIsPwIAKskPAJJ8PgCkLp8PAKmrz5cDUJVvRwBAAtuXAHw/AFTh8wGAtN5/f4b+7Tf9Fp8PQJr65X84/D4Aaes3f6vPB8D58A8AEv8DAOn+BZCGXwBIPH4BIPf4BYDc4xcAcscfAOS+P+Uf4bN7fL4f4HQA/vYAsHt6AFs9XwFsdY/H55MD2OsA+7p4fTo5gF395u6iT+4BwF0F2NXVd4sY04uLi/H9m98/G1wXgF0H2D0S4P5pAexNAOyPB9jf3QOYWl9fr+4O6u7u7vD4/9f/OEC8v79X6vXq5eUlO6iXl1ezn95+/uP++B4OsL+/b/N4P7P9999rM1+rra0VqYWFhSY/u99mfnZ6S99vY+b38HAbm5+r8P39vU5vX6+7u7ulwP6+f84Acv5+r8Xq9frfL6XfK+Wf3wJg57f7AJDz9/uYv1/f7wPY+T0AkH9+v6ffO+m/AsC+/9D8pT4fwF//Gf9H+v0N3z/4HwCQf/47AH+9B4Bdv//O/K/u8fg9PoC7D/D74P/4A+DuA4DbAfb39/p7AJv7PQCv+wH4XQPgTwfY398B4H8O8LcHwG8NQDvA3wUAn64BbPcAtvL/A9itAcA+X76/f376Tf9Y//pjf/39659p++H5v/6mN//pbf8AALBv//pYf/02v39/+/b574/56zf57wGAfP7f+/N/f/r/bvr/uPvv+r+67R6fuwtws4B/bQD+9QDYb4D/AABb7T7A95f1W7+Xv7//T49Xv5d+v7T/68D8/y7AbwPwVwPs3xfA7wtg1/6b763+rf8FwNYB+E0CfgsAbv3G76TfT/+mAnArwP4WADtTgF8G4DcM8IsB9lsC8D8H2NsA/O8A8EcC/D8A7N//9vD4/9t/+g4P4F4D/HcB+AsD7L//vD4/9Nf58f+bPf+o/Yv5Uf9Yf+o//uI//uw//vA//vI//uw/uI+f4wP3+v74H76//8H97/+tH//rD89HjX14/1r//oP/9f//7/Af8E/wH/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP8B/wT/Af8E/wH/BP+XgZ6Z+O6m//gD/p8/4G8G8L8E+NsD+FsDwN4G8LcFsLUF4LcFsHUFwN8OwNYVgN8OgN0WwNcNAP87wO4G+D8A7PYA//8Afw+A3wXw5wL47vP5+f9wD3/O/4Xv//7+v56u7j/qP/7+Nn/+/t/f6e7+U/9f99O//+939O//9ff6438DAP73B/vT++3nB4C/wAD/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf8E/wH/Bf+Xg5m5uZmZ+eO76vP9+fvTfO4/9v+e7vD+Uf+v/97f6u/8f/33//f//v///wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP+Xmfnpmfnp+frTfP5/7n//O7r/p9/7U/+vf+97/v/f////BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP+Xmfnpmfnp+frTfP5/7n//O7r/p9/7U/+vf+97/v/f////BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP8E/wT/BP+b');
-            background-size: cover;
-            border: 1px solid var(--border-color);
-        }
-
-        .uc-info {
+        .uc-icon {
+            width: 55px;
+            height: 55px;
+            background: #252845;
+            border-radius: 10px;
             display: flex;
-            flex-direction: column;
-        }
-
-        .uc-amount {
-            font-size: 1.1rem;
+            justify-content: center;
+            align-items: center;
             font-weight: bold;
-            color: var(--primary-text);
+            color: var(--accent-color);
+            border: 1px solid #3f447a;
         }
 
-        .uc-extra {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
+        .details b {
+            font-size: 1.1rem;
+            display: block;
         }
 
-        .uc-card-right {
+        .details span {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .right-side {
             text-align: right;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 4px;
         }
 
         .old-price {
-            font-size: 0.9rem;
-            color: var(--secondary-text);
+            font-size: 0.8rem;
+            color: var(--text-dim);
             text-decoration: line-through;
+            display: block;
         }
 
         .new-price {
@@ -130,150 +113,173 @@
             color: var(--price-color);
         }
 
-        .discount-badge {
-            background-color: var(--discount-bg);
-            color: white;
-            font-size: 0.75rem;
-            padding: 2px 8px;
-            border-radius: 4px;
+        .badge {
+            background: #ff3e3e;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 5px;
             font-weight: bold;
+            margin-top: 5px;
+            display: inline-block;
         }
 
-        /* Footer ya Malipo */
-        .payment-footer {
-            margin-top: auto; /* Sukuma chini kabisa */
-            border-top: 1px solid var(--border-color);
-            padding-top: 16px;
-        }
-
-        .total-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            color: var(--secondary-text);
-            font-size: 0.95rem;
-        }
-
-        .total-amount {
-            color: var(--primary-text);
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .proceed-btn {
-            background-color: var(--button-color);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: background-color 0.2s;
-        }
-
-        .proceed-btn:hover {
-            background-color: #1976d2;
+        footer {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
     <div class="header">
-        <h1>ZOEL UC SHOP - KARIBU KWENYE</h1>
+        <h1>INFLUENCER ZOEL</h1>
+        <p style="margin: 5px 0;">WELCOME KWENYE UC SHOP</p>
     </div>
 
-    <div class="uc-list">
-        
-        <a href="https://wa.me/NUNMBER_YAKO_HAPA?text=Habari ZOEL, nahitaji kununua 600 + 60 UC kwa TZS 25,789.83" class="uc-card" target="_blank">
-            <div class="uc-card-left">
-                <div class="pubg-icon"></div>
-                <div class="uc-info">
-                    <span class="uc-amount">600 + 60 UC</span>
-                    <span class="uc-extra">600 + 60 UC</span>
-                </div>
-            </div>
-            <div class="uc-card-right">
-                <span class="old-price">TZS 25,858.51</span>
-                <span class="new-price">TZS 25,789.83</span>
-                <span class="discount-badge">8% Off</span>
-            </div>
-        </a>
+    <div class="shop-container">
 
-        <a href="https://wa.me/NUNMBER_YAKO_HAPA?text=Habari ZOEL, nahitaji kununua 60 UC kwa TZS 2,306.29" class="uc-card" target="_blank">
-            <div class="uc-card-left">
-                <div class="pubg-icon"></div>
-                <div class="uc-info">
-                    <span class="uc-amount">60 UC</span>
-                    <span class="uc-extra">60 UC</span>
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 60 UC kwa TZS 2,306.29" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>60 UC</b>
+                    <span>Instant Delivery</span>
                 </div>
             </div>
-            <div class="uc-card-right">
+            <div class="right-side">
                 <span class="old-price">TZS 2,562.55</span>
                 <span class="new-price">TZS 2,306.29</span>
-                <span class="discount-badge">10% Off</span>
+                <div class="badge">10% OFF</div>
             </div>
         </a>
 
-        <a href="https://wa.me/NUNMBER_YAKO_HAPA?text=Habari ZOEL, nahitaji kununua 300 + 25 UC kwa TZS 11,883.01" class="uc-card" target="_blank">
-            <div class="uc-card-left">
-                <div class="pubg-icon"></div>
-                <div class="uc-info">
-                    <span class="uc-amount">300 + 25 UC</span>
-                    <span class="uc-extra">300 + 25 UC</span>
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 300 + 25 UC kwa TZS 11,883.01" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>300 + 25 UC</b>
+                    <span>Bonus Included</span>
                 </div>
             </div>
-            <div class="uc-card-right">
+            <div class="right-side">
                 <span class="old-price">TZS 12,916.31</span>
                 <span class="new-price">TZS 11,883.01</span>
-                <span class="discount-badge">8% Off</span>
+                <div class="badge">8% OFF</div>
             </div>
         </a>
 
-        <a href="https://wa.me/NUNMBER_YAKO_HAPA?text=Habari ZOEL, nahitaji kununua 1500 + 300 UC kwa TZS 59,510.30" class="uc-card" target="_blank">
-            <div class="uc-card-left">
-                <div class="pubg-icon"></div>
-                <div class="uc-info">
-                    <span class="uc-amount">1500 + 300 UC</span>
-                    <span class="uc-extra">1500 + 300 UC</span>
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 600 + 60 UC kwa TZS 25,789.83" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>600 + 60 UC</b>
+                    <span>Popular Package</span>
                 </div>
             </div>
-            <div class="uc-card-right">
+            <div class="right-side">
+                <span class="old-price">TZS 25,858.51</span>
+                <span class="new-price">TZS 25,789.83</span>
+                <div class="badge">8% OFF</div>
+            </div>
+        </a>
+
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 1500 + 300 UC kwa TZS 59,510.30" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>1500 + 300 UC</b>
+                    <span>Elite Bundle</span>
+                </div>
+            </div>
+            <div class="right-side">
                 <span class="old-price">TZS 64,685.11</span>
                 <span class="new-price">TZS 59,510.30</span>
-                <span class="discount-badge">8% Off</span>
+                <div class="badge">8% OFF</div>
             </div>
         </a>
 
-        <a href="https://wa.me/NUNMBER_YAKO_HAPA?text=Habari ZOEL, nahitaji kununua 3000 + 850 UC kwa TZS 119,044.42" class="uc-card" target="_blank">
-            <div class="uc-card-left">
-                <div class="pubg-icon"></div>
-                <div class="uc-info">
-                    <span class="uc-amount">3000 + 850 UC</span>
-                    <span class="uc-extra">3000 + 850 UC</span>
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 3000 + 850 UC kwa TZS 119,044.42" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>3000 + 850 UC</b>
+                    <span>Best Value</span>
                 </div>
             </div>
-            <div class="uc-card-right">
+            <div class="right-side">
                 <span class="old-price">TZS 129,396.11</span>
                 <span class="new-price">TZS 119,044.42</span>
-                <span class="discount-badge">8% Off</span>
+                <div class="badge">8% OFF</div>
+            </div>
+        </a>
+
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 6000 + 2100 UC kwa TZS 238,112.66" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>6000 + 2100 UC</b>
+                    <span>Pro Gamer Pack</span>
+                </div>
+            </div>
+            <div class="right-side">
+                <span class="old-price">TZS 258,818.11</span>
+                <span class="new-price">TZS 238,112.66</span>
+                <div class="badge">8% OFF</div>
+            </div>
+        </a>
+
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 12000 + 4200 UC kwa TZS 476,249.14" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>12000 + 4200 UC</b>
+                    <span>Master Bundle</span>
+                </div>
+            </div>
+            <div class="right-side">
+                <span class="old-price">TZS 517,662.11</span>
+                <span class="new-price">TZS 476,249.14</span>
+                <div class="badge">8% OFF</div>
+            </div>
+        </a>
+
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 18000 + 6300 UC kwa TZS 714,385.62" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>18000 + 6300 UC</b>
+                    <span>Ultimate Pack</span>
+                </div>
+            </div>
+            <div class="right-side">
+                <span class="old-price">TZS 776,506.11</span>
+                <span class="new-price">TZS 714,385.62</span>
+                <div class="badge">8% OFF</div>
+            </div>
+        </a>
+
+        <a href="https://wa.me/255777534945?text=Habari Zoel, nahitaji 30000 + 10500 UC kwa TZS 1,190,658.58" class="uc-item">
+            <div class="left-side">
+                <div class="uc-icon">UC</div>
+                <div class="details">
+                    <b>30000 + 10500 UC</b>
+                    <span>God Mode Pack</span>
+                </div>
+            </div>
+            <div class="right-side">
+                <span class="old-price">TZS 1,294,194.11</span>
+                <span class="new-price">TZS 1,190,658.58</span>
+                <div class="badge">8% OFF</div>
             </div>
         </a>
 
     </div>
 
-    <div class="payment-footer">
-        <div class="total-section">
-            <span>Total (Fees applied)</span>
-            <span class="total-amount">TZS 0.00</span> </div>
-        <button class="proceed-btn">PROCEED TO PAY</button>
-    </div>
-</div>
+    <footer>
+        &copy; 2026 INFLUENCER ZOEL SHOP | Tanzania
+    </footer>
 
 </body>
 </html>
